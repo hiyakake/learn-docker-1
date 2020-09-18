@@ -1,4 +1,6 @@
-From nginx:1.17.5-alpine
-COPY ./start.sh /usr/local/bin/start.sh
-RUN chmod +x /usr/local/bin/start.sh
-CMD ["/usr/local/bin/start.sh"]
+From python:3.7.5-slim
+Label author="myname@example.com"
+RUN pip install flask==1.1.1
+COPY ./server.py /server.py
+ENV PORT 80
+CMD ["python", "-u", "/server.py"]
